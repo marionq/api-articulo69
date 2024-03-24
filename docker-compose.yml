@@ -1,0 +1,17 @@
+version: '3'
+
+networks:
+  python-net:
+    external: false
+    ipam:
+      config:
+        - subnet: 172.1.1.0/24
+
+services:
+  api-articulo69
+    build: .
+    image: apiarticulo69/api-articulo69:v1
+    container_name: api-articulo69
+    ports:
+    - "5000:5000"
+
