@@ -1,0 +1,11 @@
+[Unit]
+Description=Manage api-articulo69 service
+
+[Service]
+WorkingDirectory=/u02/api-articulo69
+Environment="FLASK_APP=app.py"
+ExecStart=sh /u02/api-articulo69/start.sh
+User=azureuser
+Type=simple
+Restart=on-failure
+RestartSec=10
