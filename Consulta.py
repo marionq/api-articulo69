@@ -2,6 +2,9 @@
 import psycopg2
 from datetime import datetime
 
+import sys
+import os
+
 import configparser
 
 
@@ -14,12 +17,12 @@ class Consulta:
     config = configparser.ConfigParser()
     config.read('configFile.ini')
 
-    database = config["DB"]["database"]
-    user = config["DB"]["user"]
-    password = config["DB"]["password"]
-    host = config["DB"]["host"]
-    port = config["DB"]["port"]    
-    schema = config["DB"]["schema"]
+    database = os.getenv('PG_DB')
+    user = os.getenv('PG_USER')
+    password = os.getenv('PG_PASSWORD')
+    host = os.getenv('PG_HOST')
+    port = os.getenv('PG_PORT')
+    schema = os.getenv('PG_SCHEMA')
 
     # establish connections
     conn_string = f'postgresql://{user}:{password}@{host}/{database}?options=-csearch_path%3D{schema}'
